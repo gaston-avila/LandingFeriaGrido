@@ -210,15 +210,15 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
   .suite-card.cloud{background:linear-gradient(135deg, color-mix(in oklab, var(--accent) 30%, var(--surface)), var(--surface));border-color:color-mix(in oklab, var(--accent) 50%, var(--line))}
   .suite-card.loyalty{background:linear-gradient(135deg, color-mix(in oklab, var(--accent3) 20%, var(--surface)), var(--surface));border-color:color-mix(in oklab, var(--accent3) 40%, var(--line))}
   .suite-card.pedidos{background:linear-gradient(135deg, color-mix(in oklab, var(--accent2) 20%, var(--surface)), var(--surface));border-color:color-mix(in oklab, var(--accent2) 40%, var(--line))}
-  .suite-card .slogo{height:52px;width:auto;align-self:flex-start;filter:drop-shadow(0 2px 12px color-mix(in oklab, #000 40%, transparent))}
-  .suite-card.cloud .slogo{filter:brightness(0) invert(1) drop-shadow(0 2px 12px color-mix(in oklab, #000 40%, transparent))}
+  .suite-card .slogo{height:54px;width:auto;max-width:80%;align-self:flex-start;display:block;object-fit:contain;filter:drop-shadow(0 2px 12px color-mix(in oklab, #000 40%, transparent))}
+  .suite-card.cloud .slogo{filter:drop-shadow(0 2px 12px color-mix(in oklab, #000 40%, transparent))}
   .suite-card .role{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
   .suite-card p{color:var(--ink);font-size:15px;line-height:1.55;margin-top:auto;font-weight:500}
   .suite-card.cloud p{color:var(--ink)}
   @media (max-width:960px){
     .suite-grid{grid-template-columns:1fr}
   }
-  .migration .tline{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;margin-top:40px}
+  .migration .tline{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative;margin-top:40px}
   .migration .tline::before{content:"";position:absolute;left:0;right:0;top:28px;height:1px;background:var(--line)}
   .migration .step{position:relative;padding-top:60px}
   .migration .step .dot{position:absolute;top:22px;left:0;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--accent2)}
@@ -349,12 +349,15 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
   .roadmap .track .pill{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;padding:5px 10px;border-radius:20px;background:var(--bg);border:1px solid var(--line);color:var(--muted);white-space:nowrap}
   .roadmap .track .pill.live{background:var(--accent2);border-color:var(--accent2);color:#0F0035;font-weight:700}
   .roadmap .milestones{display:flex;flex-direction:column;gap:14px}
-  .roadmap .ms{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:14px 16px;background:var(--bg);border:1px solid var(--line);border-radius:12px;transition:border-color .2s}
-  .roadmap .ms:hover{border-color:var(--accent2)}
-  .roadmap .ms .q{font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:var(--accent2);text-transform:uppercase;font-weight:600}
-  .roadmap .ms .t{font-size:14px;color:var(--ink);font-weight:500;line-height:1.4}
-  .roadmap .ms .t small{display:block;color:var(--muted);font-size:12px;font-weight:400;margin-top:2px}
-  .roadmap .ms .st{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+  .roadmap .ms{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:14px 18px;background:var(--bg);border:1px solid var(--line);border-radius:12px;transition:border-color .2s,transform .2s;position:relative}
+  .roadmap .ms::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:2px;background:var(--accent2);border-radius:2px;opacity:.55}
+  .roadmap .ms:hover{border-color:var(--accent2);transform:translateX(2px)}
+  .roadmap .ms .t{font-size:15px;color:var(--ink);font-weight:600;line-height:1.35}
+  .roadmap .ms .t small{display:block;color:var(--muted);font-size:12.5px;font-weight:400;margin-top:3px;line-height:1.45}
+  .roadmap .ms .st{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--accent2);text-transform:uppercase;font-weight:700;background:color-mix(in oklab, var(--accent2) 15%, transparent);padding:5px 9px;border-radius:6px;white-space:nowrap}
+  .roadmap .ms.more{background:transparent;border-style:dashed;justify-content:center;text-align:center}
+  .roadmap .ms.more::before{display:none}
+  .roadmap .ms.more .t{font-style:italic;color:var(--muted);font-weight:500}
 
   /* DEMO BAR */
   .demo-bar{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -459,9 +462,37 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
   .cta-glow2{position:absolute;inset:auto 20% -240px auto;width:400px;height:400px;background:radial-gradient(circle, color-mix(in oklab, var(--accent2) 50%, transparent), transparent 70%);pointer-events:none;opacity:.35}
 
   /* FOOTER */
-  footer{border-top:1px solid var(--line);padding:40px 0;background:var(--bg)}
-  footer .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
-  footer .col{display:flex;gap:24px;font-size:13px;color:var(--muted);font-weight:500}
+  footer.sf-foot{border-top:1px solid var(--line);background:var(--bg);padding:64px 0 40px}
+  footer.sf-foot .top{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:flex-start;margin-bottom:36px}
+  footer.sf-foot .brand-stack{display:flex;flex-direction:column;gap:24px;max-width:520px}
+  footer.sf-foot .talk-h{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.015em;color:var(--ink);margin-bottom:4px}
+  footer.sf-foot .contacts{display:flex;flex-wrap:wrap;gap:32px;align-items:center}
+  footer.sf-foot .contact{display:inline-flex;align-items:center;gap:12px;color:var(--ink);font-size:15px;font-weight:500}
+  footer.sf-foot .contact .ico{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink);flex-shrink:0}
+  footer.sf-foot .contact:hover{color:var(--accent2)}
+  footer.sf-foot .right-logo{align-self:flex-start;display:inline-flex;align-items:flex-start}
+  footer.sf-foot .right-logo img{height:64px;width:auto;display:block}
+  footer.sf-foot .divider{height:1px;background:var(--line);margin:0 0 28px}
+  footer.sf-foot .mid{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-bottom:32px}
+  footer.sf-foot .addr{display:inline-flex;align-items:center;gap:12px;color:var(--ink);font-size:14px}
+  footer.sf-foot .addr .ico{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink);flex-shrink:0}
+  footer.sf-foot .socials{display:inline-flex;gap:14px;align-items:center}
+  footer.sf-foot .socials a{width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;transition:transform .15s, background .15s}
+  footer.sf-foot .socials a:hover{transform:translateY(-2px);background:var(--accent2);color:var(--bg)}
+  footer.sf-foot .bottom{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
+  footer.sf-foot .quals{display:flex;align-items:flex-end;gap:16px}
+  footer.sf-foot .qual-badge{width:64px;height:64px;border-radius:50%;background:var(--ink);color:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--mono);font-size:8px;letter-spacing:.05em;text-align:center;line-height:1.1;font-weight:700;padding:8px}
+  footer.sf-foot .qual-badge.iqnet{background:#F4F4F4;color:#0F0035}
+  footer.sf-foot .iram{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.05em;align-self:flex-end;padding-bottom:6px}
+  footer.sf-foot .site-link{display:inline-flex;align-items:center;gap:10px;color:var(--accent2);font-weight:600;font-size:14px;letter-spacing:.02em;border:1px solid color-mix(in oklab, var(--accent2) 60%, var(--line));padding:11px 18px;border-radius:999px;transition:all .2s}
+  footer.sf-foot .site-link:hover{background:var(--accent2);color:#0F0035}
+  @media (max-width:760px){
+    footer.sf-foot .top{grid-template-columns:1fr;gap:24px}
+    footer.sf-foot .right-logo{order:-1}
+    footer.sf-foot .right-logo img{height:48px}
+    footer.sf-foot .mid{grid-template-columns:1fr}
+    footer.sf-foot .contacts{gap:16px;flex-direction:column;align-items:flex-start}
+  }
 
   /* TWEAKS */
   #tweaks{position:fixed;right:20px;bottom:20px;z-index:100;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;width:320px;display:none;box-shadow:0 20px 80px rgba(0,0,0,.7);font-family:var(--sans)}
@@ -505,18 +536,28 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
     <a href="#" class="sf-logo" aria-label="Smartfran Cloud">
       <img class="word" src="assets/brand/SmartFran-Cloud-white.png" alt="Smartfran Cloud" />
     </a>
-    <div class="links">
-      <a href="#legado">15 años</a>
-      <a href="#valor">Valor</a>
-      <a href="#capacidades">Capacidades</a>
-      <a href="#bi">BI</a>
-      <a href="#probalo">Probalo</a>
-      <a href="#roadmap">Roadmap + IA</a>
-      <a href="#migracion">Migración</a>
-    </div>
-    <a href="#probalo" class="btn primary"><span class="live-dot"></span>Probá el POS ahora <span class="arrow">→</span></a>
+    <a href="#" id="nav-pos-cta" target="_blank" rel="noopener" class="btn primary"><span class="live-dot"></span>Probá el POS ahora <span class="arrow">→</span></a>
   </div>
 </nav>
+
+<!-- LEGACY (15 años) — primero -->
+<section class="block legacy" id="legado">
+  <div class="wrap">
+    <div class="grid">
+      <div class="years">
+        <span class="big">15</span>
+        <span class="lbl">2011 → 2026 → <span style="font-size:1.6em;line-height:.4;display:inline-block;transform:translateY(.12em);color:var(--accent2)">∞</span></span>
+      </div>
+      <div>
+        <div class="eyebrow" style="margin-bottom:18px">— Honramos lo construido</div>
+        <h3 style="font-size:clamp(44px,5.6vw,76px);line-height:1;letter-spacing:-.025em;font-weight:800;margin-bottom:28px">Mismo ADN.<br/><span style="color:var(--accent2)">Nueva era.</span></h3>
+        <p>Una plataforma no llega a 15 años por casualidad. Smartfran acompañó a la red durante <strong>más de una década y media</strong>. Estable, veloz, conocida por todos los equipos de tus heladerías. Un NPS que habla por sí solo.</p>
+        <p class="pull">Cloud no reemplaza ese camino: lo capitaliza.</p>
+        <p>Tomamos lo que funciona y lo llevamos a otra escala. La <strong>lógica de tu negocio es la misma</strong>. Lo que cambia es el tiempo que te libera, los costos que desaparecen y las ventas que antes se escapaban.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- HERO -->
 <header class="hero">
@@ -530,7 +571,7 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
     </h1>
     <p class="sub">Sin servidor en el local. Sin sincronizar turnos. Sin pesar cada caja. La plataforma que <strong>libera tiempo</strong>, <strong>baja costos</strong> e <strong>impulsa las ventas</strong> — pensada desde cero para la forma en que operan tus heladerías.</p>
     <div class="hero-cta">
-      <a href="#probalo" class="btn primary"><span class="live-dot"></span>Probá el POS ahora <span class="arrow">→</span></a>
+      <a href="#" id="hero-pos-cta" target="_blank" rel="noopener" class="btn primary"><span class="live-dot"></span>Probá el POS ahora <span class="arrow">→</span></a>
       <a href="#valor" class="btn violet">Ver qué gana el franquiciado</a>
     </div>
     <div class="hero-meta">
@@ -554,26 +595,6 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
     <div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div>
   </div>
 </header>
-
-<!-- LEGACY -->
-<section class="block legacy" id="legado">
-  <div class="wrap">
-    <div class="grid">
-      <div class="years">
-        <span class="big">15</span>
-        <span class="lbl">On Premise · 2011 → 2026</span>
-      </div>
-      <div>
-        <div class="eyebrow" style="margin-bottom:18px">— Honramos lo construido</div>
-        <h3>Mismo ADN.<br/><span style="color:var(--accent2)">Nueva era.</span></h3>
-        <p style="margin-top:20px">Una plataforma no llega a 15 años por casualidad.</p>
-        <p>Smartfran On&nbsp;Premise acompañó a la red durante <strong>más de una década y media</strong>. Estable, veloz, conocida por todos los equipos de tus heladerías. Un NPS que habla por sí solo.</p>
-        <p class="pull">Cloud no reemplaza ese camino: lo capitaliza.</p>
-        <p>Tomamos lo que funciona y lo llevamos a otra escala. La <strong>lógica de tu negocio es la misma</strong>. Lo que cambia es el tiempo que te libera, los costos que desaparecen y las ventas que antes se escapaban.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- INFRA MANIFESTO BAND -->
 <section class="infra-band" id="infra" aria-label="Cero instalaciones">
@@ -613,7 +634,7 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
     <div class="sec-head">
       <div class="left">
         <span class="eyebrow">— Lo que ganás</span>
-        <h2>Cuatro formas<br/>de ganar <span class="accent">más plata</span>.</h2>
+        <h2>Cuatro formas<br/>de aumentar<br/>tu <span class="accent">rentabilidad</span>.</h2>
       </div>
       <p class="lede">Smartfran Cloud se paga solo. <strong>Más ventas</strong> porque atendés mejor al socio Club Grido; <strong>menos costos</strong> porque desaparece la infraestructura local; <strong>menos tiempo</strong> perdido en tareas operativas; <strong>más control</strong> del negocio en vivo.</p>
     </div>
@@ -649,7 +670,7 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
     <div class="sec-head">
       <div class="left">
         <span class="eyebrow">— Valor por rol</span>
-        <h2>Cada uno<br/>gana algo <span class="accent">propio</span>.</h2>
+        <h2>Impulsar a toda<br/>la <span class="accent">Cadena Grido</span>.</h2>
       </div>
       <p class="lede">Cloud fue pensada para toda la cadena: franquiciante, franquiciado y colaboradores de la heladería. Elegí tu rol y ves exactamente qué cambia para vos.</p>
     </div>
@@ -799,25 +820,7 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
         <span class="eyebrow">— Inteligencia de negocios</span>
         <h2>De una <span class="thin">fotografía</span><br/>a una <span class="accent">película interactiva</span>.</h2>
       </div>
-      <p class="lede">El franquiciado es, ante todo, <strong>un empresario</strong>. Cloud le entrega un tablero pensado para el <strong>análisis estratégico</strong> — una experiencia de usuario que te lleva <strong>de lo general a lo particular</strong>, con filtros cruzados que te muestran exactamente lo que necesitás ver para tomar mejores decisiones.</p>
-    </div>
-
-    <!-- Role shift banner -->
-    <div class="role-shift">
-      <div class="side before">
-        <span class="k">Fotografía</span>
-        <h4>Un PDF fijo,<br/>a fin de mes.</h4>
-        <span class="desc">Mirás el número final. No sabés por qué pasó.</span>
-      </div>
-      <div class="arrow-big">
-        <span class="chev">›</span>
-        <span class="lbl">Cloud · BI</span>
-      </div>
-      <div class="side after">
-        <span class="k">Película interactiva</span>
-        <h4>Recorrés el negocio.<br/>De lo general al <span class="accent">ticket</span>.</h4>
-        <span class="desc">Filtrás, cruzás dimensiones y entendés el porqué.</span>
-      </div>
+      <p class="lede">El franquiciado es, ante todo, <strong>un empresario</strong>. Cloud le entrega un tablero pensado para el <strong>análisis estratégico</strong> — una experiencia de usuario que te lleva <strong>de lo general a lo particular</strong>, con filtros cruzados que te muestran exactamente lo que necesitás ver para entender por qué y así tomar mejores decisiones.</p>
     </div>
 
     <!-- Live dashboard mock -->
@@ -1014,13 +1017,15 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
             <div class="kicker">Pista 1 · Evolución de plataforma</div>
             <h3>Más <span class="accent">velocidad, más control</span>.</h3>
           </div>
-          <span class="pill live">En curso</span>
         </div>
         <div class="milestones">
-          <div class="ms"><span class="q">Q1'26</span><span class="t">Catálogo + disponibilidad centralizada multi-plataforma<small>Un click apaga un producto en PedidosYa, Rappi y PediGrido a la vez</small></span><span class="st">build</span></div>
-          <div class="ms"><span class="q">Q2'26</span><span class="t">Valores de referencia por rubro<small>BI sugiere oportunidades comparando tu tienda con el benchmark de la red</small></span><span class="st">design</span></div>
-          <div class="ms"><span class="q">Q3'26</span><span class="t">App móvil nativa para franquiciados<small>Operación, alarmas y resultados al alcance, sin abrir la laptop</small></span><span class="st">scoped</span></div>
-          <div class="ms"><span class="q">Q4'26</span><span class="t">Circuito completo de recetario y mermas<small>Trazabilidad extremo a extremo desde el insumo hasta la venta</small></span><span class="st">explore</span></div>
+          <div class="ms"><span class="t">Canal Mayorista<small>Lista de precios oficiales por canal, promociones, integración con Conquer</small></span></div>
+          <div class="ms"><span class="t">Cuentas corrientes<small>Gestión de ventas a crédito</small></span></div>
+          <div class="ms"><span class="t">Integración plataformas eCommerce<small>Catálogo y promociones centralizadas. Disponibilidad de stock en tiempo real</small></span></div>
+          <div class="ms"><span class="t">Facturación electrónica Chile<small>Integración full</small></span></div>
+          <div class="ms"><span class="t">App para franquiciados<small>Notificaciones e información en tiempo real</small></span></div>
+          <div class="ms"><span class="t">Turnero<small>Optimización del flujo y mejora de la experiencia del cliente</small></span></div>
+          <div class="ms more"><span class="t">Mucho más…<small>El roadmap se actualiza con la voz de la red</small></span></div>
         </div>
       </div>
 
@@ -1033,10 +1038,11 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
           <span class="pill live">Demo</span>
         </div>
         <div class="milestones">
-          <div class="ms"><span class="q">Now</span><span class="t">Asistente conversacional Smartfran<small>Preguntale al negocio: ventas, stock, alertas — en lenguaje natural</small></span><span class="st">demo →</span></div>
-          <div class="ms"><span class="q">Now</span><span class="t">Carga de facturas con IA<small>Subís foto o PDF y los datos entran solos al sistema</small></span><span class="st">demo →</span></div>
-          <div class="ms"><span class="q">Q2'26</span><span class="t">Recomendación de reposición por sabor<small>Sugerencias diarias calibradas con la baja real de cajas</small></span><span class="st">train</span></div>
-          <div class="ms"><span class="q">Q3'26</span><span class="t">Detección automática de desvíos<small>Cierre diario con flags sobre qué pedir revisar — antes de que te duela</small></span><span class="st">explore</span></div>
+          <div class="ms"><span class="t">Asistente conversacional Smartfran<small>Preguntale al negocio lo que necesitás saber ya: ventas, stock, alertas — en lenguaje natural</small></span><span class="st">demo →</span></div>
+          <div class="ms"><span class="t">Carga de facturas con IA<small>Subís foto o PDF y los datos entran solos al sistema</small></span><span class="st">demo →</span></div>
+          <div class="ms"><span class="t">Ofrecimientos personalizados<small>Impulsa el up-selling y cross-selling con IA, en el momento de la venta</small></span></div>
+          <div class="ms"><span class="t">Asistente de planificación de compras<small>Detecta tendencias y, con tu stock, te ayuda a armar la compra ideal</small></span></div>
+          <div class="ms"><span class="t">Predicción de ventas<small>Modelo entrenado con miles de millones de tickets — ajusta por clima, época, día y franja horaria</small></span></div>
         </div>
         <div class="demo-bar">
           <button class="demo-launch" data-demo="chatbot">
@@ -1063,7 +1069,7 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
         <span class="eyebrow">— Cómo migramos</span>
         <h2>Pasar a Cloud es<br/>más <span class="accent">simple</span> de lo que creés.</h2>
       </div>
-      <p class="lede">Diseñamos el proceso para que <strong>no pares el local</strong> ni aprendas un sistema nuevo. Cuatro pasos, acompañados.</p>
+      <p class="lede">Diseñamos el proceso para que <strong>no pares el local</strong> ni aprendas un sistema nuevo. Tres pasos, acompañados.</p>
     </div>
 
     <div class="tline">
@@ -1075,19 +1081,13 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
       </div>
       <div class="step">
         <div class="dot"></div>
-        <div class="n">02 · Migración de datos</div>
-        <h3>Llevamos todo, intacto.</h3>
-        <p>Historial, clientes, stock, usuarios, configuraciones. Migración asistida y validada antes del corte.</p>
-      </div>
-      <div class="step">
-        <div class="dot"></div>
-        <div class="n">03 · Capacitación</div>
+        <div class="n">02 · Capacitación</div>
         <h3>La misma lógica, más simple.</h3>
         <p>Formaciones cortas por rol. Los equipos retoman ritmo en menos de una semana.</p>
       </div>
       <div class="step">
         <div class="dot"></div>
-        <div class="n">04 · Go-live acompañado</div>
+        <div class="n">03 · Go-live acompañado</div>
         <h3>Arrancamos juntos.</h3>
         <p>Soporte reforzado las primeras dos semanas. Si algo no anda, lo resolvemos nosotros.</p>
       </div>
@@ -1142,7 +1142,7 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
     <p class="lede">Smartfran Cloud está arriba de esta página, funcionando. Entrá, logueate y recorré la plataforma como si ya fuera tu sistema de trabajo. Si después querés profundizar, pasá por el stand.</p>
 
     <div class="ctrow">
-      <a href="#probalo" class="btn primary big-cta"><span class="live-dot"></span>Probá el POS ahora <span class="arrow">→</span></a>
+      <a href="#" id="cta-pos-cta" target="_blank" rel="noopener" class="btn primary big-cta"><span class="live-dot"></span>Probá el POS ahora <span class="arrow">→</span></a>
     </div>
 
     <div class="stand">Stand Smartfran · Feria Grido 2026 · Pabellón proveedores estratégicos</div>
@@ -1150,15 +1150,58 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="wrap row">
-    <a href="#" class="sf-logo" aria-label="Smartfran Cloud">
-      <img class="word" src="assets/brand/SmartFran-Cloud-white.png" alt="Smartfran Cloud" />
-    </a>
-    <div class="col">
-      <span>© 2026 Smartfran</span>
-      <span>Proveedor estratégico · Red Grido</span>
-      <a href="#probalo" style="color:var(--accent2)">Probá el POS →</a>
+<footer class="sf-foot">
+  <div class="wrap">
+    <div class="top">
+      <div class="brand-stack">
+        <div class="talk-h">¡Hablemos!</div>
+        <div class="contacts">
+          <a class="contact" href="https://wa.me/5493517000100" target="_blank" rel="noopener">
+            <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.1c-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M20.5 3.5C18.3 1.2 15.3 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.7 1.4h.1c6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.3zM12 22c-1.8 0-3.5-.5-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.5 15.7 2 13.9 2 12 2 6.5 6.5 2 12 2c2.7 0 5.2 1 7.1 2.9C21 6.8 22 9.3 22 12c0 5.5-4.5 10-10 10z"/></svg></span>
+            +54 9 351 7000 100
+          </a>
+          <a class="contact" href="/cdn-cgi/l/email-protection#b0d9ded6dff0c3ddd1c2c4d6c2d1de9ed3dfdd">
+            <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <span class="__cf_email__" data-cfemail="83eaede5ecc3f0eee2f1f7e5f1e2edade0ecee">[email&#160;protected]</span>
+          </a>
+        </div>
+        <a class="site-link" href="https://www.smartfran.com/" target="_blank" rel="noopener">
+          smartfran.com
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+      <a href="https://www.smartfran.com/" target="_blank" rel="noopener" class="right-logo" aria-label="Smartfran">
+        <img src="assets/brand/SmartFran-white.png" alt="Smartfran" />
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="mid">
+      <div class="addr">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s7-7 7-12a7 7 0 0 0-14 0c0 5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+        Molina Navarrete 1045 · B° Urca · Córdoba · Argentina
+      </div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/company/smartfran" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5C.02 2.12 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM5 8H0v16h5V8zm7.98 0H8.02v16H13v-8.4c0-4.65 6-5.04 6 0V24h5V13.92c0-7.85-8.95-7.56-11.02-3.7V8z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/smartfran" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        </a>
+        <a href="https://www.facebook.com/smartfran" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="quals">
+        <div class="qual-badge"><span>IRAM</span><span style="font-size:7px;margin-top:2px;font-weight:500">GESTIÓN<br/>DE LA<br/>CALIDAD</span></div>
+        <div class="qual-badge iqnet"><span style="font-size:10px">IQNet</span><span style="font-size:6px;margin-top:2px;font-weight:500">CERTIFIED<br/>MANAGEMENT<br/>SYSTEM</span></div>
+        <div class="iram">IRAM-ISO 9001:2015</div>
+      </div>
+      <div class="iram">© 2026 Smartfran · Proveedor estratégico Red Grido</div>
     </div>
   </div>
 </footer>
@@ -1477,6 +1520,12 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
   }
   loadPos(TWEAKS.posUrl);
 
+  // POS CTAs open in new tab
+  function applyPosCtas(url){
+    document.querySelectorAll('#nav-pos-cta, #hero-pos-cta, #cta-pos-cta').forEach(a => a.setAttribute('href', url || '#'));
+  }
+  applyPosCtas(TWEAKS.posUrl);
+
   // TWEAKS
   function applyTweaks(t){
     const r = document.documentElement;
@@ -1490,7 +1539,7 @@ const TWEAKS = /*EDITMODE-BEGIN*/{
     if(TWEAKS[k]) inp.value = TWEAKS[k];
     inp.addEventListener('input', () => {
       TWEAKS[k] = inp.value;
-      if(k === 'posUrl') loadPos(inp.value);
+      if(k === 'posUrl') { loadPos(inp.value); applyPosCtas(inp.value); }
       else applyTweaks(TWEAKS);
       try{ window.parent.postMessage({type:'__edit_mode_set_keys', edits:{[k]: inp.value}}, '*'); }catch(e){}
     });
